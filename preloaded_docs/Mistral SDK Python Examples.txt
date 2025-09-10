@@ -1,0 +1,55 @@
+# Mini Python SDK Examples for Mistral
+
+This file provides practical usage patterns of the Mistral SDK (`mistralai`).
+
+## Setup
+```bash
+pip install mistralai
+export MISTRAL_API_KEY="your_api_key"
+```
+
+## 1. Chat Completion
+```python
+from mistralai.client import MistralClient
+
+client = MistralClient(api_key="YOUR_API_KEY")
+
+response = client.chat(
+    model="mistral-large-latest",
+    messages=[{"role": "user", "content": "Summarize quantum computing"}]
+)
+print(response.choices[0].message["content"])
+```
+
+## 2. Creating Embeddings
+```python
+embedding = client.embeddings(
+    model="mistral-embed",
+    input="Embeddings are useful for semantic search."
+)
+print("Vector length:", len(embedding.data[0].embedding))
+```
+
+## 3. Error Handling
+```python
+from mistralai.exceptions import MistralAPIError
+
+try:
+    response = client.chat(model="wrong-model", messages=[{"role":"user","content":"test"}])
+except MistralAPIError as e:
+    if e.status_code == 401:
+        print("Authentication failed: Check API key.")
+    elif e.status_code == 429:
+        print("Rate limit exceeded. Try again later.")
+    else:
+        print("Unexpected error:", e)
+```
+
+## 4. Streaming Responses
+```python
+for chunk in client.chat_stream(
+    model="mistral-large-latest",
+    messages=[{"role": "user", "content": "Write a poem about AI"}]
+):
+    print(chunk.delta, end="", flush=True)
+```

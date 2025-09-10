@@ -1,0 +1,26 @@
+# AI Use Cases & Tutorials
+
+This document highlights practical AI applications using Mistral models.
+
+## 1. Chatbots
+- Use embeddings + RAG for company knowledge base.
+- Provide accurate, context-aware responses.
+```python
+query = "What is Mistral 7B?"
+docs = ["Mistral 7B is an open-weight LLM.", "Mixtral 8x7B uses MoE architecture."]
+```
+
+## 2. Search Engines
+- Vector search + embeddings enable semantic search.
+- Replaces keyword-only search with meaning-based retrieval.
+
+## 3. Summarization
+- Summarize PDFs, articles, or meeting transcripts using chat completion.
+
+## 4. Code Assistance
+- Use Mistral Large for debugging, code completion, and refactoring.
+- Integrate into developer IDEs.
+
+## 5. Data Analysis
+- Combine embeddings + clustering to categorize documents.
+- Automate report generation.

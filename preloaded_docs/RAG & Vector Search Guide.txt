@@ -1,0 +1,54 @@
+# Retrieval-Augmented Generation (RAG) & Vector Search Guide
+
+## What is RAG?
+Retrieval-Augmented Generation (RAG) is a hybrid approach that combines:
+1. **Information Retrieval (IR)** → Fetch relevant documents from a knowledge base using embeddings.
+2. **Text Generation (LLMs)** → Use the retrieved context to generate informed, accurate, and grounded responses.
+
+This technique mitigates hallucinations and ensures that LLM outputs are based on verifiable data.
+
+## How Embeddings Work
+Embeddings are dense vector representations of text. Similar pieces of text map to nearby points in high-dimensional space.
+
+### Similarity Metrics
+- **Cosine Similarity**: Measures angle between two vectors (scale-invariant).
+- **L2 (Euclidean Distance)**: Measures straight-line distance between two points.
+- **Dot Product**: Used in some embedding models for speed.
+
+Example:
+- "dog" and "puppy" → high cosine similarity
+- "dog" and "car" → low similarity
+
+## Tools for Vector Search
+- **FAISS (Facebook AI Similarity Search)**: Optimized for large-scale vector search.
+- **Pinecone / Weaviate / Milvus**: Managed vector DB solutions.
+- **SQLite w/ extensions**: Lightweight demos.
+
+## Workflow Example in Python
+```python
+from mistralai.client import MistralClient
+import faiss
+import numpy as np
+
+# Step 1: Generate embeddings
+client = MistralClient(api_key="YOUR_API_KEY")
+docs = ["Mistral is an AI company.", "RAG improves LLM accuracy.", "Embeddings map text to vectors."]
+
+embeddings = [client.embeddings(model="mistral-embed", input=doc).data[0].embedding for doc in docs]
+dim = len(embeddings[0])
+
+# Step 2: Build FAISS index
+index = faiss.IndexFlatL2(dim)
+index.add(np.array(embeddings))
+
+# Step 3: Search for relevant docs
+query = "What is RAG?"
+q_emb = client.embeddings(model="mistral-embed", input=query).data[0].embedding
+D, I = index.search(np.array([q_emb]), k=2)
+print("Retrieved:", [docs[i] for i in I[0]])
+```
+
+## Why RAG Matters
+- Reduces hallucinations in LLMs.
+- Enables domain-specific QA systems (legal, medical, finance).
+- Scales knowledge without retraining the model.

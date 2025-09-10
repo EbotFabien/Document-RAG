@@ -1,0 +1,18 @@
+# Internal Notes / Fake FAQ Dataset
+
+This file simulates a FAQ dataset for RAG demos.
+
+Q: How to generate embeddings with Mistral?
+A: Use `client.embeddings(model="mistral-embed", input="your text")`.
+
+Q: What’s the difference between cosine similarity and L2?
+A: Cosine similarity measures angle between vectors (scale-invariant). L2 is Euclidean distance, sensitive to magnitude.
+
+Q: Which model is best for reasoning?
+A: Mistral Large or Mixtral 8x7B are optimized for reasoning-heavy tasks.
+
+Q: How do I handle API rate limits?
+A: Catch 429 errors and implement exponential backoff in retries.
+
+Q: Can I fine-tune Mistral models?
+A: As of 2024, Mistral focuses on open-weight base models. Fine-tuning is possible with frameworks like LoRA.

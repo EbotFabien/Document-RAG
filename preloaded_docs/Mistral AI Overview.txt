@@ -1,0 +1,61 @@
+# Mistral AI Overview
+
+## Mission & Vision
+Mistral AI is a European AI company focused on building state-of-the-art open-weight language models. Their mission is to democratize AI access by making high-performing models available to developers, researchers, and companies without restrictive licensing. Mistral emphasizes transparency, efficiency, and scalability in AI development.
+
+## AI Philosophy
+- **Open Source First**: Releasing base models (e.g., Mistral 7B) under permissive licenses.
+- **Performance with Efficiency**: Designing models with fewer parameters but high performance through optimized training and architectures.
+- **Developer-Centric Tools**: Building SDKs and APIs that allow seamless integration of LLMs into products.
+
+## Key Models
+1. **Mistral 7B** (2023)
+   - 7 billion parameters
+   - Decoder-only architecture
+   - Trained with grouped-query attention (GQA)
+   - Outperforms LLaMA 13B on multiple benchmarks
+   - Open-weight and widely adopted
+
+2. **Mixtral 8x7B** (2023)
+   - Mixture of Experts (MoE) architecture
+   - 12.9B active parameters per forward pass
+   - 8 experts, only 2 used per token → efficiency with scale
+   - Achieves GPT-3.5-level performance with lower inference cost
+
+3. **Mistral Large** (2024)
+   - Proprietary model hosted via API
+   - Competitive with GPT-4-class models in reasoning and coding tasks
+   - Offered commercially for enterprises
+
+## SDK & API Introduction
+Mistral provides an SDK (`mistralai`) and REST API to interact with their models.
+
+### Example (Chat Completion)
+```python
+from mistralai.client import MistralClient
+
+client = MistralClient(api_key="YOUR_API_KEY")
+
+response = client.chat(
+    model="mistral-large-latest",
+    messages=[{"role": "user", "content": "Explain retrieval-augmented generation"}]
+)
+
+print(response.choices[0].message["content"])
+```
+
+### Example (Embeddings)
+```python
+embedding = client.embeddings(
+    model="mistral-embed",
+    input="Artificial intelligence transforms industries."
+)
+print(embedding.data[0].embedding[:10])  # first 10 dimensions
+```
+
+## Use Cases
+- Knowledge retrieval (RAG systems)
+- Summarization of enterprise data
+- AI-powered search engines
+- Code assistance and debugging
+- Customer support chatbots

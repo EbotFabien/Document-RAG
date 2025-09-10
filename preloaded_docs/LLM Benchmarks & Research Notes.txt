@@ -1,0 +1,33 @@
+# LLM Benchmark Papers (Summarized)
+
+This document highlights key LLM benchmarks and findings from public papers and blogs.
+
+## 1. Mistral 7B (2023)
+- **Parameters**: 7B
+- **Architecture**: Decoder-only, GQA
+- **Results**:
+  - Beats LLaMA 13B on most benchmarks.
+  - Strong performance in reasoning and code tasks.
+
+## 2. Mixtral 8x7B (2023)
+- **Parameters**: MoE, 12.9B active per pass
+- **Key Findings**:
+  - Matches GPT-3.5 on reasoning tasks.
+  - Efficient due to sparse activation.
+
+## 3. GPT-4 (OpenAI, 2023)
+- **Scale**: Not disclosed, estimated 1T+ parameters (sparse mixture)
+- **Strengths**:
+  - Best-in-class reasoning, coding, and multilingual ability.
+  - Outperforms previous models on MMLU, HellaSwag, GSM8K.
+
+## 4. Benchmarks Commonly Used
+- **MMLU**: Multitask language understanding (57 subjects).
+- **HellaSwag**: Commonsense reasoning.
+- **GSM8K**: Grade-school math problems.
+- **HumanEval**: Code generation accuracy.
+
+## 5. Key Trends
+- Efficiency > Size: Smaller models with optimized architectures can rival larger ones.
+- Mixture of Experts (MoE) is becoming standard for balancing cost vs. performance.
+- Retrieval-Augmented Generation (RAG) increasingly integrated into evaluation pipelines.

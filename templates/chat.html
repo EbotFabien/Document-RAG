@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Ask Questions about : {{doc}}</h2>
+
+<form method="post" class="chat-form">
+    <input type="text" name="question" placeholder="Type your question..." required>
+    <button type="submit">Ask</button>
+</form>
+
+{% if question %}
+    <div class="chat-result">
+        <h3>Question :</h3>
+        <p>{{ question }}</p>
+
+        <h3>Answer:</h3>
+        <p>{{ answer }}</p>
+
+        <h3>Retrieved Context:</h3>
+        <ul>
+        {% for chunk in retrieved %}
+            <li>{{ chunk }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+{% endblock %}
