@@ -43,8 +43,8 @@ It lets you **upload documents**, indexes them with **FAISS**, and enables **cha
 Clone the repository and set up a virtual environment:
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/EbotFabien/Document-RAG.git
+cd Document-RAG
 python3 -m venv venv
 source venv/bin/activate   # (Linux/Mac)
 venv\Scripts\activate      # (Windows)
