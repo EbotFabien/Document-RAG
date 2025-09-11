@@ -1,6 +1,6 @@
 # 📚 Flask RAG Demo with Mistral SDK
 
-This project is a **Flask-based Retrieval-Augmented Generation (RAG)** demo built.  
+This project is a **Flask-based Retrieval-Augmented Generation (RAG)** demo.  
 It lets you **upload documents**, indexes them with **FAISS**, and enables **chatting with the document content in context only** via the **Mistral AI SDK**.
 
 ---
